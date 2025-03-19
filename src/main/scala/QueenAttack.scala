@@ -1,9 +1,8 @@
 case class Queen(x: Int, y: Int)
 
 object Queen:
-   def create(row: Int, col: Int): Option[Queen] =
-      if row < 0 || col < 0 || row > 7 || col > 7 then None
-      else Some(Queen(row, col))
+   def create(x: Int, y: Int): Option[Queen] =
+      Option.when(Seq(x, y).forall(n => (0 to 7).contains(n)))(Queen(x, y))
 
 object QueenAttack:
    def canAttack(q1: Queen, q2: Queen): Boolean =
